@@ -37,8 +37,9 @@ class TagController extends Controller
 
     public function editById($id)
     {
+        $tags = Tag::all();
         $tag = Tag::FindOrFail($id);
-        return view('tags.create',['tag' => $tag]);
+        return view('tags.create',['tag' => $tag,'tags' => $tags]);
     }
 
     public function update(Request $request)

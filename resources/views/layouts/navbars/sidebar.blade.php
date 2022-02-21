@@ -37,13 +37,13 @@
             </li>
 
             <li>
-                <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
+                <a data-toggle="collapse" href="#crud" aria-expanded="false">
                     <i class="fab fa-laravel" ></i>
                     <span class="nav-link-text" >{{ __('Products/tags') }}</span>
                     <b class="caret mt-1"></b>
                 </a>
 
-                <div class="collapse show" id="laravel-examples">
+                <div class="collapse show" id="crud">
                     <ul class="nav pl-4">
                         <li @if ($pageSlug == 'products') class="active " @endif>
                             <a href="{{ route('products')  }}">
@@ -59,6 +59,14 @@
                         </li>
                     </ul>
                 </div>
+            </li>
+
+            <li>
+                <a  href="/relatorio" target="_blank" >
+                    <i class="fab fa-laravel" ></i>
+                    <span class="nav-link-text" >{{ __('Relatório') }}</span>
+                    <b class="caret mt-1"></b>
+                </a>
             </li>
            
         </ul>

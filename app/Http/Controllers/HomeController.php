@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\Product;
+
 class HomeController extends Controller
 {
     /**
@@ -21,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $product = Product::simplePaginate(3);
+        return view('dashboard',['products' => $product ]);
     }
 }

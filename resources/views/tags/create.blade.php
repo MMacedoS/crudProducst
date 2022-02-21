@@ -27,9 +27,9 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="title">@if (@tag) {{ 'Edit Tag' }} @else {{ 'Create Tag' }} @endif</h5>
+                    <h5 class="title">@if (@$tag) {{ 'Edit Tag' }} @else {{ 'Create Tag' }} @endif</h5>
                 </div>
-                <form method="post" action="@if (@tag) {{ route('tag.edit') }} @else {{ route('tag.add') }} @endif" enctype="multipart/form-data" autocomplete="off">
+                <form method="post" action="@if (@$tag) {{ route('tag.edit') }} @else {{ route('tag.add') }} @endif" enctype="multipart/form-data" autocomplete="off">
                     <div class="card-body">
                             @csrf
                             @method('put')
@@ -38,8 +38,8 @@
 
                             <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                 <label>{{ _('Name') }}</label>
-                                <input type="hidden" name="id" value="@if($tag) {{ $tag->id }} @else {{ '' }} @endif" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }} " placeholder="{{ _('id') }}" >
-                                <input type="text" name="name" value="@if($tag) {{ $tag->name }} @else {{ '' }} @endif" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ _('Name') }}" >
+                                <input type="hidden" name="id" value="@if(@$tag) {{ $tag->id }} @else {{ '' }} @endif" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }} " placeholder="{{ _('id') }}" >
+                                <input type="text" name="name" value="@if(@$tag) {{ $tag->name }} @else {{ '' }} @endif" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ _('Name') }}" >
                                 @include('alerts.feedback', ['field' => 'name'])
                             </div>                        
                           
@@ -51,6 +51,13 @@
             </div>
 
            
+        </div>
+        <div class="col-md-4">
+            <div id="listaTag">
+                @foreach($tags as $tag)
+                    <span>{{ $tag->name }}</span>
+                @endforeach
+            </div>
         </div>
         
     </div>

@@ -55,3 +55,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('edit/profile/{id}','App\Http\Controllers\ProfileController@editById')->middleware('auth');
 
+
+
+
+Route::get('/relatorio', "App\Http\Controllers\RelatorioController@gerarPDF")->middleware('auth');
