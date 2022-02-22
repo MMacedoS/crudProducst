@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Product;
+use App\Models\Tag;
 use PDF;
 class RelatorioController extends Controller
 {
@@ -11,8 +11,8 @@ class RelatorioController extends Controller
 
     public function gerarPDF()
     {
-        $products = Product::all();
-        $pdf = PDF::loadView('pdf',compact('products'));
+        $tags = Tag::all();
+        $pdf = PDF::loadView('pdf',compact('tags'));
 
         return $pdf->setPaper('a4')->stream('Todos os Produtos');
     }
